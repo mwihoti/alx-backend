@@ -8,7 +8,7 @@ def index_range(page: int, page_size: int) -> tuple:
     """
     function index_range
     Args:
-        page : int,
+        page: int,
         page_size: int
     """
     start_index = (page - 1) * page_size
