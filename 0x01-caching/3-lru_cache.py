@@ -3,8 +3,8 @@
 class LRUCache that inherits from BaseCaching
 and is a caching system
 """
-BaseCaching = __import__('base_caching').BaseCaching
 from collections import OrderedDict
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LRUCache(BaseCaching):
