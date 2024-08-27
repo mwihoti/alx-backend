@@ -7,6 +7,9 @@ from flask import Flask, request, render_template
 
 
 class Config:
+    """
+    class config
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -25,6 +28,7 @@ def get_index() -> str:
     return render_template('2-index.html')
 
 
+@babel.localeselector
 def get_locale() -> str:
     """Get locale from request.
     """
