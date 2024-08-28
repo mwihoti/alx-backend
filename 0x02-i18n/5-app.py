@@ -4,7 +4,7 @@ Babel setup
 """
 from flask_babel import Babel
 from typing import Union, Dict
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, g
 
 
 class Config:
@@ -26,11 +26,25 @@ users = {
     3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
+
+
 def get_user() -> Union[Dict, None]:
     """
     Get user from users
     """
-    
+    userId = request.args.get('login_as')
+    if userId:
+        return users.get(int(userId))
+    return None
+
+
+@app.before_request
+def before_request() -> None:
+    """
+    Before request
+    """
+    user = get_user()
+    g.user = user
 
 
 @app.route('/')
@@ -40,7 +54,6 @@ def get_index() -> str:
     return render_template('5-index.html')
 
 
-@babel.localeselector
 def get_locale() -> str:
     """Get locale from request.
     """
