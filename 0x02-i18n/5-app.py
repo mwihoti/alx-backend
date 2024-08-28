@@ -49,13 +49,15 @@ def before_request() -> None:
 
 @app.route('/')
 def get_index() -> str:
-    """The home/index page.
+    """
+    The home/index page.
     """
     return render_template('5-index.html')
 
 
 def get_locale() -> str:
-    """Get locale from request.
+    """
+    Get locale from request.
     """
     locale = request.args.get('locale', "")
     if locale in app.config['LANGUAGES']:
