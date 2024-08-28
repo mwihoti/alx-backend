@@ -51,7 +51,7 @@ def before_request() -> None:
 def get_index() -> str:
     """The home/index page.
     """
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 @babel.localeselector
